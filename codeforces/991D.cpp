@@ -18,18 +18,18 @@ typedef vector<pi> vp;
 typedef vector<pl> vpl;
 
 const ll inf = 10000000000000ll;
-bool res[200];
+string t,b;
 
 int main()
 {
-    char x;
-    int count = 0;
-    cin >> x;
-    while(x != EOF){
-        if(x == '0')res[count]=false;
-        else res[count]=true;
-        count++;
-    }
+    int best = 0;
+    cin >> t >> b;
 
-    
+    for(int i=0;i+1<t.size();i++){
+        if      (t[i] == '0' && t[i+1] == '0' && b[i] == '0')best++,t[i]='O',t[i+1]='O',b[i]='O';
+        else if (t[i] == '0' && b[i]=='0' && b[i+1]=='0')best++,t[i]='O',b[i+1]='O',b[i]='O';
+        else if (b[i] == '0' && b[i+1]=='0' && t[i+1]=='0')best++,b[i]='O',b[i+1]='O',t[i+1]='O';    
+        else if (t[i] == '0' && t[i+1]=='0' && b[i+1]=='0')best++,t[i]='O',t[i+1]='O',b[i+1]='O';
+    }
+    cout << best;
 }
