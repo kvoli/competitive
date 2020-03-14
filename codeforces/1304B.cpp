@@ -4,7 +4,6 @@ using namespace std;
 
 #define pb push_back
 #define mp make_pair
-#define mod 1000000007
 
 typedef long long ll;
 typedef pair<int, int> pi;
@@ -20,9 +19,16 @@ typedef vector<pl> vpl;
 
 const ll inf = 10000000000000ll;
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+int main() {
+    int n, m;        
+    set<string> seen;
+	string res;
+	string in;
+
+	cin >> n >> m;
+
+	for(int i=0;i<n;i++){
+		// getline(in, cin);
+		// seen.count();
+	}
 }

@@ -64,9 +64,58 @@ vector<bool> visited;
 vi tin, low;
 int timer, res;
 
+void dfs(int v, int p = -1) {
+    visited[v] = true;
+    tin[v] = low[v] = timer++;
+    for (int to : adj[v]) {
+        if (to == p) continue;
+        if (visited[to]) {
+            low[v] = min(low[v], tin[to]);
+        } else {
+            dfs(to, v);
+            low[v] = min(low[v], low[to]);
+            if (low[to] > tin[v]) {
+                IS_BRIDGE(v, to);
+            }
+        }
+    }
+}
+
+void IS_BRIDGE(int v, int to) {
+    res++;
+}
+
+void find_bridges(int n) {
+    timer = 0;
+    visited.assign(n, false);
+    tin.assign(n, -1);
+    low.assign(n, -1);
+    for (int i=0;i<n;++i) {
+        if (!visited[i]) dfs(i);
+    }
+
+}
+
 int main(){
     io1;
     io2;
-
+    while (true) {
+        string line;
+        int n;
+        cin >> n;
+        if (n==0)break;
+        getline(cin, line);
+        while(true)
+        {
+            getline(cin, line);
+            istringstream iss(line);\
+            int src;
+            int dst;
+            if (src == 0)break;
+            while (iss >> dst) {
+                
+            }
+        }
+    }
     return 0;
 }
