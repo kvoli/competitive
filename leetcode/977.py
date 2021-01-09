@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        return sorted(list(map(lambda x: x*x, nums)))
+
