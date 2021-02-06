@@ -4,11 +4,11 @@ using namespace std;
 
 class Solution {
 private:
-    vector<vector<int>> result;
+    set<vector<int>> result;
     void heaps(vector<int>& nums, int k) {
       if (k == 1) {
         vector<int> cpy = nums;
-        result.push_back(cpy);
+        result.insert(cpy);
       }
 
       for (int i = 0; i < k; ++i) {
@@ -21,6 +21,7 @@ private:
 public:
     vector<vector<int>> permute(vector<int>& nums) {
       heaps(nums, nums.size());
-      return result;
+      vector<vector<int>> r(result.begin(), result.end());
+      return r;
   }
 };
