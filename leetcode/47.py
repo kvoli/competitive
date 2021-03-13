@@ -5,7 +5,7 @@ class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         if not nums:
             return 0
-        
+
         local_max = nums[0]
         global_max = nums[0]
 

@@ -1,5 +1,5 @@
 class Solution {
-public:
+  public:
     bool bsearch(vector<int>& nums, int target, int l, int r) {
       int mid;
       while (l <= r) {
