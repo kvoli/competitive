@@ -10,28 +10,34 @@
  */
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-      int n,i,k;
+    ListNode* mergeKLists(vector<ListNode*>& lists)
+    {
+        int n, skip, k;
 
-      n = lists.size();
-      i = 1;
+        n = lists.size();
+        skip = 1;
 
-      while (i < n) {
-        for (k = i; k < n-i; k*=2)  lists[i] = merge(lists[k], lists[k+i]);
-        i*=2;
-      }
+        while (skip < n) {
+            for (k = 0; k < n - skip; k += skip * 2)
+                lists[k] = merge(lists[k], lists[k + skip]);
+            skip *= 2;
+        }
 
-      return n > 0 ? lists[0] ? nullptr;
+        return n > 0 ? lists[0] : nullptr;
     }
-private:
-    ListNode* merge(ListNode* a, ListNode* b) {
-      if (!a) return b;
-      if (!b) return a;
-      if (a -> val < b -> val) { 
-        a -> next = merge(a -> next, b);
-        return a;
-      }
-      b -> next =  merge(a, b -> next);
-      return b;
+
+    ListNode* merge(ListNode* a, ListNode* b)
+    {
+        if (!a)
+            return b;
+        if (!b)
+            return a;
+        if (a->val < b->val) {
+            a->next = merge(a->next, b);
+            return a;
+        }
+
+        b->next = merge(a, b->next);
+        return b;
     }
 };
